@@ -1,6 +1,6 @@
 class DogsController < ApplicationController
 
-before_action :set_dog, only: [:show, :edit, :update]
+  before_action :set_dog, only: [:show, :edit, :update, :destroy]
 
   def index
     @dogs = Dog.all
@@ -35,7 +35,14 @@ before_action :set_dog, only: [:show, :edit, :update]
       flash.now[:notice] = "Something went wrong. Try again."
       render :edit
     end
+  end
 
+  def destroy
+    if @dog.destroy
+      redirect_to dogs_url, notice: "Successfully deleted."
+    else
+      redirect_to dogs_url, notice: "Could not delete dog."
+    end
   end
 
   private
