@@ -19,7 +19,7 @@
 
 <!-- owner -->
 <p>
-  <strong>Owner: </strong><%= @dog.owner %>
+  <strong>Owner: </strong><%= @dog.owner.try(:name) %>
 </p>
 
 
@@ -29,4 +29,3 @@
   <strong>Date Added: </strong><%= @dog.created_at %>
 </p>
 
-<%= link_to 'Home', dogs_path, class: 'btn btn-default' %>
